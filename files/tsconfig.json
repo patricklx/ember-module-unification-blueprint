@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "target": "es2019",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": false,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noEmitOnError": false,
+    "noEmit": true,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "baseUrl": ".",
+    "module": "es6",
+    "experimentalDecorators": true,
+    "typeRoots": [
+      "types"
+    ],
+    "paths": {
+      "client/tests/*": [
+        "tests/*"
+      ],
+      "client/*": [
+        "<%= name %>/*"
+      ],
+      "*": [
+        "types/*"
+      ]
+    }
+  },
+  "include": [
+    "types/global.d.ts",
+    "app/**/*",
+    "tests/**/*",
+    "types/**/*"
+  ]
+}

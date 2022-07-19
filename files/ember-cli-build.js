@@ -2,10 +2,13 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const Funnel = require('broccoli-funnel');
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
-    // Add options here
+    trees: {
+      styles: 'app/ui/styles'
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated
@@ -20,6 +23,20 @@ module.exports = function(defaults) {
   // modules that you would like to import into your application
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
+
+  const tree = new Funnel('app/ui', {
+    allowEmtpy: true,
+    include: ['index.html'],
+    destDir: app.name,
+    annotation: 'ui to index.html'
+  });
+
+  const toArray = app.toArray;
+  app.toArray = function() {
+    const arr = toArray.call(this);
+    arr.push(tree);
+    return arr;
+  };
 
   return app.toTree();
 };
